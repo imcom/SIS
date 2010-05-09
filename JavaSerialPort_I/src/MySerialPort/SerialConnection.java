@@ -333,7 +333,7 @@ public class SerialConnection extends Panel implements SerialPortEventListener, 
 	public void retrieveMessage(String msg){
 		msgBuffer += msg;
                 parent.DA = true;// SerialPortManager DA
-                System.out.println("去你MD: " + msgBuffer);
+                System.out.println("retrieveMessage: " + msgBuffer);
 	}
 	
 	public String GetInputMessage(){

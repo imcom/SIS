@@ -764,6 +764,7 @@ public class Controller_O {
 
 
 		synchronized String ftpCommand(String cmd){
+                        String regex = "[45][0-9][0-9] ";
 			if(cmd == null) cmd = "";
 			StringTokenizer ftpCmdtok = new StringTokenizer(cmd.toLowerCase());
 			String ftpCmd = "";
@@ -792,8 +793,9 @@ public class Controller_O {
 							}
 							//Thread.sleep(200);
 						}
-
-						if(temp.startsWith("250 ")||temp.startsWith("550"))
+                                                String subtemp = temp.substring(0, 4);
+						if(temp.startsWith("250 ")||subtemp.matches(regex))
+						//if(temp.startsWith("250 ")||temp.startsWith("550"))
 						{    // Thread.sleep(1000);
 							//send("#PFTP#"+"#"+mapkey+"#"+"221 no support"+"#END#");
 							break;}
@@ -819,8 +821,9 @@ public class Controller_O {
 							}
 							//Thread.sleep(200);
 						}
-						
-						if(temp.startsWith("211 ") || temp.startsWith("502 "))
+						String subtemp = temp.substring(0, 4);
+						if(temp.startsWith("250 ")||subtemp.matches(regex))
+						//if(temp.startsWith("211 ") || temp.startsWith("502 "))
 						{    // Thread.sleep(1000);
 							//send("#PFTP#"+"#"+mapkey+"#"+"221 no support"+"#END#");
 							break;}

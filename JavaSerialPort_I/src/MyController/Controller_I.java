@@ -663,7 +663,7 @@ public class Controller_I {
 			/*收到的指令 串口发*/
 			
 			
-
+                        String regex = "[45][0-9][0-9] ";
 			System.out.println("proxy_in send it :" + cmd);
 			//outData.println(in.readLine());
 			//if(cmd == null) cmd = "";
@@ -692,7 +692,8 @@ public class Controller_I {
 						System.out.println("ftpsession5 receive it "+ temp);
 						outData.println(temp);
 						System.out.println("ftpsession6 send it"+ temp);
-						if(temp.startsWith("250 ")||temp.startsWith("550 "))
+                                                String subtemp = temp.substring(0, 4);
+						if(temp.startsWith("250 ")||subtemp.matches(regex))
 
 						break;
 					}
@@ -715,7 +716,9 @@ public class Controller_I {
 						System.out.println("ftpsession5 receive it "+ temp);
 						outData.println(temp);
 						System.out.println("ftpsession6 send it"+ temp);
-						if(temp.startsWith("211 ")||temp.startsWith("502 "))
+                                                String subtemp = temp.substring(0, 4);
+						if(temp.startsWith("250 ")||subtemp.matches(regex))
+						//if(temp.startsWith("211 ")||temp.startsWith("502 "))
 
 						break;
 					}
